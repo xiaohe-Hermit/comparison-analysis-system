@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>潮州市湘桥区人民检察院公网文书分析系统</title>
+    <link rel="stylesheet" href=../node_modules/bootstrap/dist/css/bootstrap.css>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="window">
+    <div class="top-menu">
+        <span>潮州市湘桥区人民检察院公网文书分析系统</span>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <ul>
+                    <li onclick="changeContent('page1')"><img src="../src/static/首页.png"><a id="home"
+                                                                                              href="#">首页</a></li>
+                    <li onclick="changeContent('page2')"><img src="../src/static/服务.png"><a id="serve"
+                                                                                              href="#">服务</a></li>
+                    <li><img src="../src/static/退出.png"><a id="exit" href="#">退出</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="contentArea" class="right">
+            <div id="page1" style="display:block;">
+
+                <div class="instruction">
+                    <div class="instruction_text">
+                        <h1><strong>使用说明</strong></h1>
+                        <p>点击服务开始使用，可以在设置里面调整分析参数。</p>
+                        <p><strong>参数设置:</strong></p>
+                        <p>含有默认参数设置，用户可以手动调整各项参数，以下是参数设置的格式:</p>
+                        <p><strong>采集地址:</strong>请输入必须以"http://"或"https://"为开头，且必须是送达公告页面的地址;
+                        </p>
+                        <p><strong>关键词设置:</strong>可以输入多个关键词，但必须用逗号(包括中文的"，"以及英文的",")分隔;
+                        </p>
+                        <p><strong>时间范围设置:</strong>可以挑选最早日期以及最晚日期，但必须保证"最早日期"&lt"最晚日期";
+                        </p>
+                        <p><strong>分析功能:</strong></p>
+                        <p>
+                            点击按钮后核对分析参数，核对完毕后点击开始分析，若分析结果显示有可疑文书，则可进行下载，否则无法进行下载。</p>
+                        <p><strong>下载功能:</strong></p>
+                        <p>默认下载于用户当前系统的桌面。</p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="page2" style="display:none;">
+                <span class="blue-border">采集分析</span>
+                <div id="function-area">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">采集地址</span>
+                        <input id="url-show" disabled type="text" class="form-control" aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm2">分析关键字</span>
+                        <input id="keyword-show" disabled type="text" class="form-control"
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm3">检索时间范围</span>
+                        <input id="date-show" disabled type="text" class="form-control"
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <div id="btn-group">
+                        <button id="setting-open-window" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#settingModal"
+                                data-bs-whatever="@mdo">设置
+                        </button>
+                        <button id="analysis-open-window" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#analysisModal">
+                            分析
+                        </button>
+                        <button id="download-open-window" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#downloadModal">结果下载
+                        </button>
+                    </div>
+                </div>
+                <!--弹出框-->
+                <div class="modal fade" id="settingModal" tabindex="-1" aria-labelledby="settingModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="settingModalLabel">分析设置</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">采集地址:</label>
+                                        <input id="url-setting" type="text" class="form-control"
+                                               aria-describedby="validationServerUrlFeedback" required>
+                                    </div>
+                                    <div id="validationServerUrlFeedback" class="invalid-feedback">
+                                        采集地址请以"http://"或"https://"为开头.
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">分析关键字:</label>
+                                        <textarea id="keyword-setting" class="form-control"
+                                                  id="message-text"></textarea>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">选择检索开始时间</span>
+                                        <input id="date-start-setting" type="month" aria-label="First name"
+                                               class="form-control" aria-describedby="validationServerUrlFeedback1"
+                                               required>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">选择检索结束时间</span>
+                                        <input id="date-end-setting" type="month" aria-label="First name"
+                                               class="form-control" aria-describedby="validationServerUrlFeedback2"
+                                               required>
+                                    </div>
+                                    <div id="validationServerDateFeedback" class="invalid-feedback">
+                                        请保证"最早日期"&lt"最晚日期".
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消设置
+                                </button>
+                                <button id="save-setting-btn" type="button" class="btn btn-primary">保存设置
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="analysisModal" tabindex="-1" aria-labelledby="analysisModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="analysisModalLabel">分析确认</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span>以下是本次分析的关键信息，请确认后点击“开始分析”</span>
+                                <p style="margin-top: 20px">检索地址:<span id="url-check"></span></p>
+                                <p>检索关键词:<span id="keyword-check"></span></p>
+                                <p>检索时间:<span id="date-check"></span></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">退出，还需修改
+                                </button>
+                                <button id="analysis-btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#analysisModal2">确认，开始分析
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="analysisModal2" tabindex="-1" aria-labelledby="analysisModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="analysisModalLabel2">分析页面</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div id="analysis-finish-body" class="modal-body">
+                                <p>联网分析中，可能花费较长时间，请耐心等待(大致为:每分析1年，耗时3分钟)</p>
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="analysis-exit-btn" type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">退出，取消分析
+                                </button>
+                                <button id="analysis-finish-btn" type="button" class="btn btn-primary" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true"></span>
+                                    分析中...
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="analysisModalLabel"
+                     aria-hidden="true">-->
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="downloadModalLabel">下载确认</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span>本次下载可能花费一定时间，请耐心等待</span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消，退出下载
+                                </button>
+                                <button id="download-btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#downloadModal2">确认，开始下载
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="downloadModal2" tabindex="-1" aria-labelledby="analysisModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="downloadModalLabel2">下载页面</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div id="download-finish-body" class="modal-body">
+                                <p>下载中，请耐心等待</p>
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="download-exit-btn" type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">退出，取消下载
+                                </button>
+                                <button id="download-finish-btn" type="button" class="btn btn-primary" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true"></span>
+                                    下载中...
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--消息提示框-->
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="analysisToast" class="toast" role="alert" aria-live="polite" aria-atomic="true">
+                        <div class="toast-header">
+                            <strong class="me-auto">分析结果提示</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="./renderer.js"></script>
+</body>
+</html>

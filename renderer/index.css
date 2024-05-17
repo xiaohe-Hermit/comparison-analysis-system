@@ -1,0 +1,157 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+.window {
+    height: 100vh;
+    width: 100vw;
+}
+.top-menu {
+    -webkit-app-region: drag;
+    height: 30px;
+    width: 100vw;
+    background-color: rgb(30, 68, 120);
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    z-index: 999;
+}
+.top-menu span {
+    color: white;
+    font-weight: bold;
+}
+.content {
+
+}
+.sidebar {
+    position: fixed;
+    top: 30px;
+    left: 0px; /* 初始位置设置为屏幕外 */
+    width: 50px;
+    height: 100%;
+    background-color: #333;
+    border-radius: 0px 10px 10px 0px;
+    transition: width 0.2s ease; /* 平滑过渡 */
+    overflow: hidden;
+    z-index: 100;
+}
+.sidebar:hover {
+    width: 100px; /* 鼠标悬停时的宽度，足够显示图标和文字 */
+}
+.sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 1rem;
+
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar:hover .sidebar-inner a {
+    opacity: 1; /* 鼠标悬停时显示文字 */
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar li {
+    display: flex;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+.sidebar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    opacity: 1;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    white-space: nowrap; /* 防止文字换行 */
+    transition: color 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* 内容淡入淡出效果 */
+}
+.sidebar a:hover {
+    color: #b3d4fc;
+}
+.right {
+    margin-left: 100px;
+    height: 500px;
+    /*background-color: antiquewhite;*/
+}
+#page1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+.instruction {
+    margin-top: 50px;
+    margin-left: 7.5%;
+    width: 80%;
+    height: 500px;
+    border: cornflowerblue solid 3px;
+    background-color: #b3d4fc ;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.instruction_text{
+    margin-left: 20px;
+}
+#page2{
+    background-color: #b3d4fc;
+    border: rgb(137,187,252) solid 5px;
+    border-radius: 10px;
+    margin-top: 100px;
+    width: 850px;
+}
+.blue-border {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    border: 5px solid blue; /* 设置蓝色边框 */
+    border-radius: 4px; /* 可选，为边框添加圆角 */
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+}
+#function-area{
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 150px;
+}
+#setting-area{
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+.card{
+    margin-right: 150px;
+}
+#update-setting{
+    margin-top: 20px;
+}
+#btn-group{
+    margin-bottom: 50px;
+}
+#url-check{
+    margin-left: 20px;
+}
+#keyword-check{
+    margin-left: 20px;
+}
+#date-check{
+    margin-left: 20px;
+}
+
+
