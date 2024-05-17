@@ -1,4 +1,4 @@
-完成日期：2024/05/17
+完成日期：2024/05/17 \n
 作者：xiaohe-Hermit
 介绍：一款基于 JavaScript + Node + Electron + Bootstrap 的Linux桌面端爬虫分析应用，应用于特定的法院公告爬取、筛选、分析以及文件导出。
 使用技术：
